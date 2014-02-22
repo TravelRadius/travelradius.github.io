@@ -1,11 +1,21 @@
 var first_click = false;
 
 $(document).ready(function() {
-  function loadTransportData() {
-    console.log(3);
-  }
 
-  $(".outer_row").click( function() {
+  $(".btn").click(function() {
+    if ($(this).hasClass("active"))
+      return;
+    var transp_selection = $.trim($(this).text());
+    if (transp_selection == "Car") {
+      $(".transport_info").animate({"height":"auto"}).css("visibility", "visible");;
+    }
+    else {
+      $(".transport_info").css("visibility", "hidden");
+      $(".transport_info").animate({"height":"0px"});
+    }
+  });
+
+  $(".outer_row").click(function() {
     if ($(this).hasClass("focus"))
       return;
     /*$("div.outer_row.focus").css("background-color", "").animate({"padding-left":"-=40px"})
