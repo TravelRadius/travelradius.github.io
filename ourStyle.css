@@ -39,12 +39,13 @@ html, body {
 }
 
 .focus {
-  background-color:rgb(197, 186, 60);
+  background-color:rgb(180, 199, 167);
 }
 
 .outer_row {
   color: #3d495f;
   display-table;
+  padding-left:20px;
 }
 
 .inner_row {
@@ -54,7 +55,6 @@ html, body {
   margin-bottom:20px;
   padding-top:20px;
   padding-bottom:20px;
-  padding-left:20px;
 }
 
 .title {
