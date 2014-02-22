@@ -10,6 +10,32 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="bootstrap.min.js"></script>
     <script src="ourScript.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+    <script type="text/javascript">
+
+      if(google.loader.ClientLocation)
+      {
+          visitor_lat = google.loader.ClientLocation.latitude;
+          visitor_lon = google.loader.ClientLocation.longitude;
+          visitor_city = google.loader.ClientLocation.address.city;
+          visitor_region = google.loader.ClientLocation.address.region;
+          visitor_country = google.loader.ClientLocation.address.country;
+          visitor_countrycode = google.loader.ClientLocation.address.country_code;
+
+          console.log(visitor_city);
+      }
+      else
+      {
+
+          console.log("fuark");
+          // ClientLocation not found or not populated
+          // so perform error handling
+      }
+
+
+    </script>
+
   </head>
   <body>
     <div class="main_container">
