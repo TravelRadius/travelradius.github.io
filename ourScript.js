@@ -3,8 +3,9 @@ var first_click = false;
 $(document).ready(function() {
 
   $(".btn").click(function() {
-    if ($(this).hasClass("active"))
+    if ($(this).hasClass("active") || !$(this).hasClass("t"))
       return;
+    $(this).addClass("active")
     var transp_selection = $.trim($(this).text());
     if (transp_selection == "Car") {
       $(".transport_info").animate({"height":"auto"}).css("visibility", "visible");;
@@ -18,12 +19,6 @@ $(document).ready(function() {
   $(".outer_row").click(function() {
     if ($(this).hasClass("focus"))
       return;
-    /*$("div.outer_row.focus").css("background-color", "").animate({"padding-left":"-=40px"})
-    $("div.outer_row.focus").fadeTo("fast", 1).removeClass("focus");
-
-    $(this).addClass("focus");
-    $(this).animate({"padding-left":"+=40px"});
-    $("div.outer_row").not(".focus").fadeTo("fast", .3);*/
 
     $(this).addClass("dummy");
     $(".outer_row").each(function() {
