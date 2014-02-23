@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
 
 	/* 
@@ -22,8 +23,8 @@ $(document).ready(function () {
 	amazing!
 	*/
 
-	var map = new Map(this);
-	var that = this;
+	/*map = new Map(this);
+	that = this;*/
 
   
   
