@@ -3,8 +3,19 @@
 	overflow: hidden;
 	min-width: 100%;
 	min-height: 100%;
-	margin: 0;
-	padding: 0;
+	height: calc(100% - 60px);
+
+	/* Firefox */
+	height: -moz-calc(100% - 60px);
+	/* WebKit */
+	height: -webkit-calc(100% - 60px);
+	/* Opera */
+	height: -o-calc(100% - 60px);
+	/* Standard */
+	height: calc(100% - 60px);
+
+	z-index: 100;
+	
 }
 
 .multilevelpushmenu_wrapper .levelHolderClass {

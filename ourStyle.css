@@ -3,6 +3,24 @@ html, body {
   padding:0;
 }
 
+.right{
+  position: absolute;
+
+  height: calc(100% - 60px);
+
+  /* Firefox */
+  height: -moz-calc(100% - 60px);
+  /* WebKit */
+  height: -webkit-calc(100% - 60px);
+  /* Opera */
+  height: -o-calc(100% - 60px);
+  /* Standard */
+  height: calc(100% - 60px);
+
+  width: 100%;
+  background-color: lightgray;
+}
+
 .row {
   margin-right:0;
 }

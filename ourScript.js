@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   $( '#menu' ).multilevelpushmenu({
                     menuWidth: 450, // '450px', '30em', '25%' will also work
-                            menuHeight: "100%"
+                            menuHeight: "calc(100% - 60px)"
   });
 
 
