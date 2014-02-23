@@ -4,6 +4,13 @@ var geocoder = new google.maps.Geocoder();
 var map;
 
 
+function reset_renderer(){
+
+	directionsDisplay = new google.maps.DirectionsRenderer();
+	directionsDisplay.setMap(map);
+
+}
+
 function convert_addr(latt, lont, cb) {
   var lat = parseFloat(latt);
   var lng = parseFloat(lont);
@@ -103,8 +110,8 @@ $(document).ready(function() {
 	           directionsService.route(request, function(response, status) {
 			       console.log(response);
 			       if (status == google.maps.DirectionsStatus.OK) {
-			        console.log("setting");
 			         directionsDisplay.setDirections(response);
+			         reset_renderer();
 			       }
 			       else
 			         alert(3);
