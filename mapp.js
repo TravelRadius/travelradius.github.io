@@ -43,6 +43,8 @@ function convert_addr(latt, lont, cb) {
 
 function initialize() {
   directionsDisplay = new google.maps.DirectionsRenderer();
+  console.log("directionsDisplay");
+  console.log(directionsDisplay);
 
   var mapOptions = {
 		// feel free to edit map options
@@ -91,40 +93,72 @@ $(document).ready(function() {
 
 		$('.cursorPointer').click();
 
-		var num_poi = 2;
-	    var js_return;
-	    js_return = [ {lat:"40.714224", lon:"-73.961452"}, {lat:"41.43206", lon:"-81.38992"}];
-	    var start_lat = $("#start_lat").val();
-	    var start_lon = $("#start_lon").val();
+		var urlQ = "http://travel-radius-server.herokuapp.com/serve.php?LAT="+$("#start_lat").val()+"LONG="+$("#start_lon").val()+"DIST=150";
 
-	    convert_addr(start_lat, start_lon, function(start_addr) {
+		$.get(urlQ, function(data){
 
-	      for(var i=0; i<num_poi; i++) {
-	        convert_addr(js_return[i].lat, js_return[i].lon, function(end_addr) {
-	           console.log("HI: "+end_addr);
-	           //start_addr="chicago, il";
-	           //end_addr="oklahoma city, ok";
-	           var request = {
-	              origin:start_addr,
-	              destination:end_addr,
-	              travelMode: google.maps.TravelMode.DRIVING
-	           };
-	           console.log(start_addr+"   "+end_addr);
-	           
-	           directionsService.route(request, function(response, status) {
+			var response = JSON.parse(data);
+
+			console.log(response);
+
+			var num_poi = response.length;
+		    var js_return;
+		    js_return = [ {lat:"40.714224", lon:"-73.961452"}, {lat:"41.43206", lon:"-81.38992"}];
+		    var start_lat = $("#start_lat").val();
+		    var start_lon = $("#start_lon").val();
+
+		    convert_addr(start_lat, start_lon, function(start_addr) {
+
+		      for(var i=0; i<num_poi; i++) {
+
+		      	var request = {
+		              origin:start_addr,
+		              destination:response[i],
+		              travelMode: google.maps.TravelMode.DRIVING
+		           };
+
+		      	directionsService.route(request, function(response, status) {
 			       console.log(response);
 			       if (status == google.maps.DirectionsStatus.OK) {
 			         directionsDisplay.setDirections(response);
+			         console.log("fuarkity");
+			         console.log(directionsDisplay);
 			         reset_renderer();
 			       }
 			       else
 			         alert(3);
 			    });
 
-	         });
-	      }
 
-	    });
+		      //   convert_addr(js_return[i].lat, js_return[i].lon, function(end_addr) {
+		      //      console.log("HI: "+end_addr);
+		      //      //start_addr="chicago, il";
+		      //      //end_addr="oklahoma city, ok";
+		      //      
+		      //      console.log(start_addr+"   "+end_addr);
+		           
+		      //      directionsService.route(request, function(response, status) {
+				    //    console.log(response);
+				    //    if (status == google.maps.DirectionsStatus.OK) {
+				    //      directionsDisplay.setDirections(response);
+				    //      console.log("fuarkity");
+				    //      console.log(directionsDisplay);
+				    //      reset_renderer();
+				    //    }
+				    //    else
+				    //      alert(3);
+				    // });
+
+		      //    });
+		      }
+
+		    });
+
+
+
+		});
+
+		
 
 	});
 
