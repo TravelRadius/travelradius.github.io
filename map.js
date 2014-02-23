@@ -10,6 +10,12 @@
 
 var Map = function Map(view) {
 
+  var directionsDisplay;
+
+  var directionsService = new google.maps.DirectionsService();
+
+
+
 	var mapOptions = {
 		// feel free to edit map options
 		disableDefaultUI: true,
@@ -28,8 +34,15 @@ var Map = function Map(view) {
 	}
   
 	this.init = function() {
+    
+    directionsDisplay = new google.maps.DirectionsRenderer();
+
 		// render map here
 		this.map = new google.maps.Map($('#map_canvas')[0], mapOptions);
+
+    directionsDisplay.setMap(map);
+
+
     var myLatIng = new google.maps.LatLng(visitor_lat, visitor_lon);
     var pinIcon = new google.maps.MarkerImage(
         "blueCircle.png",
@@ -71,13 +84,27 @@ var Map = function Map(view) {
 		// consider recursion :)
 	}
 
+  this.renderDirections = function(request){
+
+    directionsService.route(request, function(response, status) {
+       console.log(response);
+       if (status == google.maps.DirectionsStatus.OK) {
+        console.log("setting");
+         directionsDisplay.setDirections(response);
+       }
+       else
+         alert(3);
+     });
+
+
+  }
+
 	// call the initializer
 	this.init();
 }
 
 var first_click = false;
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
+
 var geocoder;
 var map;
 geocoder = new google.maps.Geocoder();
@@ -110,13 +137,20 @@ function convert_addr(latt, lont, cb) {
 
 $(document).ready(function() {
 
-  directionsDisplay = new google.maps.DirectionsRenderer();
-  map = Map(this);
-  directionsDisplay.setMap(map);
+
+  map = new Map(this);
+
+  console.log("ARGH!");
+  console.log(map);
+  
   $(".submit").click(function() {
     /*$.get("travel-radius-server.herokuapp.com/first8.php?LAT="+lat+"&LONG="+lon+"&DIST="+dist, function(data) {
       var js_return = jQuery.parseJSON(data);
     });*/
+
+    console.log("welp");
+    console.log(map);
+
 
     var num_poi = 1;
     var js_return = [ {lat:"40.714224", lon:"-73.961452"}];
@@ -127,22 +161,16 @@ $(document).ready(function() {
       for(var i=0; i<num_poi; i++) {
          var end_addr = convert_addr(js_return[i].lat, js_return[i].lon, function(end_addr) {
            console.log("HI: "+end_addr);
-           start_addr="chicago, il";
-           end_addr="oklahoma city, ok";
+           //start_addr="chicago, il";
+           //end_addr="oklahoma city, ok";
            var request = {
               origin:start_addr,
               destination:end_addr,
               travelMode: google.maps.TravelMode.DRIVING
            };
            console.log(start_addr+"   "+end_addr);
-           directionsService.route(request, function(response, status) {
-             console.log(response);
-             if (status == google.maps.DirectionsStatus.OK) {
-               directionsDisplay.setDirections(response);
-             }
-             else
-               alert(3);
-           });
+           
+           map.renderDirections(request);
          });
       }
     });
