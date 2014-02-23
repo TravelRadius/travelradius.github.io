@@ -64,17 +64,43 @@ $(".submit").click(function() {*/
         
 });*/
 
+
+
+
   $( '#menu' ).multilevelpushmenu({
        menuWidth: 260, // '450px', '30em', '25%' will also work
-       menuHeight: "calc(100% - 60px)"
+       menuHeight: "calc(100% - 60px)",
+      
+       onItemClick: function () {
+            var e = arguments[0];
+            if ($(e.target).prop('tagName').toLowerCase() == 'input') {
+                $(e.target).focus();
+                $(e.target).unbind('blur');
+            }
+        }
+      
   });
 
-  $('input[type="button"].btn').click(function(){
+  $('input[type="button"].btn:not(.submit)').click(function(){
 
     $(this).toggleClass("btn-selected");
 
 
   });  
+
+  // $('#menu').multilevelpushmenu({
+  //     onItemClick: function () {
+  //         var e = arguments[0];
+  //         if ($(e.target).prop('tagName').toLowerCase() == 'input') {
+  //             $(e.target).focus();
+  //             $(e.target).val('focused');
+  //             $(e.target).unbind('blur');
+  //             $(e.target).blur(function(){
+  //                 $(e.target).val('blured');
+  //             });
+  //         }
+  //     }
+  // });
 
 
   // $(".btn").click(function() {
