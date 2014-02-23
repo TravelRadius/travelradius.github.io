@@ -27,7 +27,7 @@ var Map = function Map(view) {
 	this.markers = []; // array of markers already on map
 
 	this.addPoint = function(point) {
-		// adds a point to this.points
+
 	}
 
 	this.renderAllPoints = function () {
