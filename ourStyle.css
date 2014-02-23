@@ -21,6 +21,10 @@ html, body {
   background-color: lightgray;
 }
 
+.fa.fa-reorder.floatRight.cursorPointer:hover{
+  color: #fff;
+}
+
 .btn-selected{
   background-color: #525770;
 }
