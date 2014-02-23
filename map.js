@@ -15,7 +15,16 @@ var Map = function Map(view) {
 		disableDefaultUI: true,
 		zoom: 12,
 		center: new google.maps.LatLng(visitor_lat, visitor_lon),
-		mapTypeId: google.maps.MapTypeId.ROADMAP
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+    zoomControl: true,
+    zoomControlOptions: {
+      style: google.maps.ZoomControlStyle.LARGE,
+      position: google.maps.ControlPosition.TOP_RIGHT
+    },
+    panControl: true,
+    panControlOptions: {
+      position: google.maps.ControlPosition.TOP_RIGHT
+    }
 	}
 
 	this.init = function() {
