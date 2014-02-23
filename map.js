@@ -21,6 +21,21 @@ var Map = function Map(view) {
 	this.init = function() {
 		// render map here
 		this.map = new google.maps.Map($('#map_canvas')[0], mapOptions);
+    var myLatIng = new google.maps.LatLng(visitor_lat, visitor_lon);
+    var pinIcon = new google.maps.MarkerImage(
+        "blueCircle.png",
+        null, /* size is determined at runtime */
+        null, /* origin is 0,0 */
+        null, /* anchor is bottom center of the scaled image */
+        new google.maps.Size(15, 15)
+    );  
+
+    var marker =  new google.maps.Marker({
+            position: myLatIng,
+            map: this.map,
+            title: 'Hello World!',
+            icon: pinIcon
+    });
 	}
 
 	this.points = []; // { lat:0.0, lng:0.0, name: "", time: Date() }
