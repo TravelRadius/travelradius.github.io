@@ -21,11 +21,26 @@ html, body {
   background-color: lightgray;
 }
 
+.btn-selected{
+  background-color: #525770;
+}
+
+#menu_multilevelpushmenu{
+  opacity: 0.95;
+}
+
+.levelHolderClass>ul>li>input{
+  margin: 10px 0px 10px 20px;
+  border-radius: 3px;
+  border: none;
+}
+
 .row {
   margin-right:0;
 }
 
 .main_container {
+  display: none;
   background-color:red;
 }
 

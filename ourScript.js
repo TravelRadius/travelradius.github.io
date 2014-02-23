@@ -31,6 +31,8 @@ function convert_addr(latt, lont) {
 
 $(document).ready(function() {
 
+  $('.main_container').show();
+
 /*console.log(that.map);
 directionsDisplay = new google.maps.DirectionsRenderer();
 directionsDisplay.setMap(map);
@@ -63,24 +65,31 @@ $(".submit").click(function() {*/
 });*/
 
   $( '#menu' ).multilevelpushmenu({
-       menuWidth: 350, // '450px', '30em', '25%' will also work
+       menuWidth: 260, // '450px', '30em', '25%' will also work
        menuHeight: "calc(100% - 60px)"
   });
 
+  $('input[type="button"].btn').click(function(){
 
-  $(".btn").click(function() {
-    if ($(this).hasClass("active") || !$(this).hasClass("t"))
-      return;
-    $(this).addClass("active")
-    var transp_selection = $.trim($(this).text());
-    if (transp_selection == "Car") {
-      $(".transport_info").animate({"height":"auto"}).css("visibility", "visible");;
-    }
-    else {
-      $(".transport_info").css("visibility", "hidden");
-      $(".transport_info").animate({"height":"0px"});
-    }
-  });
+    $(this).toggleClass("btn-selected");
+
+
+  });  
+
+
+  // $(".btn").click(function() {
+  //   if ($(this).hasClass("active") || !$(this).hasClass("t"))
+  //     return;
+  //   $(this).addClass("active")
+  //   var transp_selection = $.trim($(this).text());
+  //   if (transp_selection == "Car") {
+  //     $(".transport_info").animate({"height":"auto"}).css("visibility", "visible");;
+  //   }
+  //   else {
+  //     $(".transport_info").css("visibility", "hidden");
+  //     $(".transport_info").animate({"height":"0px"});
+  //   }
+  // });
 
   $(".outer_row").click(function() {
     if ($(this).hasClass("focus"))
