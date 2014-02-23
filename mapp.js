@@ -9,6 +9,8 @@ function reset_renderer(){
 	directionsDisplay = new google.maps.DirectionsRenderer();
 	directionsDisplay.setMap(map);
 
+
+
 }
 
 function convert_addr(latt, lont, cb) {
@@ -87,6 +89,8 @@ $(document).ready(function() {
 
 	$(".submit").click(function() {
 
+		$('.cursorPointer').click();
+
 		var num_poi = 2;
 	    var js_return;
 	    js_return = [ {lat:"40.714224", lon:"-73.961452"}, {lat:"41.43206", lon:"-81.38992"}];
@@ -121,8 +125,6 @@ $(document).ready(function() {
 	      }
 
 	    });
-
-
 
 	});
 
