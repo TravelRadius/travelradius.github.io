@@ -1,6 +1,13 @@
 var first_click = false;
 
+              
 $(document).ready(function() {
+
+  $( '#menu' ).multilevelpushmenu({
+                    menuWidth: 350, // '450px', '30em', '25%' will also work
+                            menuHeight: "calc(100% - 60px)"
+  });
+
 
   $(".btn").click(function() {
     if ($(this).hasClass("active") || !$(this).hasClass("t"))
