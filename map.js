@@ -107,12 +107,14 @@ function convert_addr(latt, lont, cb) {
   });   
 }
 
-
-$(document).ready(function() {
-
+function init() {
   directionsDisplay = new google.maps.DirectionsRenderer();
   map = Map(this);
   directionsDisplay.setMap(map);
+}
+
+$(document).ready(function() {
+  init();
   $(".submit").click(function() {
     /*$.get("travel-radius-server.herokuapp.com/first8.php?LAT="+lat+"&LONG="+lon+"&DIST="+dist, function(data) {
       var js_return = jQuery.parseJSON(data);
@@ -136,9 +138,10 @@ $(document).ready(function() {
            };
            console.log(start_addr+"   "+end_addr);
            directionsService.route(request, function(response, status) {
-             console.log(response);
+             console.log(response+"    !"+status);
              if (status == google.maps.DirectionsStatus.OK) {
                directionsDisplay.setDirections(response);
+              directionsDisplay.setMap(map);
              }
              else
                alert(3);
