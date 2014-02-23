@@ -21,11 +21,41 @@ html, body {
   background-color: lightgray;
 }
 
+.fa.fa-reorder.floatRight.cursorPointer:hover{
+  color: #fff;
+}
+
+.btn-selected{
+  background-color: #525770;
+}
+
+#menu_multilevelpushmenu{
+  opacity: 0.95;
+}
+
+.levelHolderClass>ul>li>a>input{
+  width: 192px;
+  height: 22px;
+  color: #3d495f;
+  margin: 10px 0px 10px 20px;
+  border-radius: 3px;
+  font-size: 16px;
+  padding-left: 8px;
+  padding-top: 4px;
+  border: none;
+}
+
+.levelHolderClass>ul>li>a>input:focus{
+
+  outline: 0;
+}
+
 .row {
   margin-right:0;
 }
 
 .main_container {
+  display: none;
   background-color:red;
 }
 
