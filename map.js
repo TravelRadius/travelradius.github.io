@@ -22,7 +22,7 @@ var Map = function Map(view) {
 
 	this.init = function() {
 		// render map here
-		this.map = new google.maps.Map($('#map_canvas')[0], mapOptions);
+		this.map = new google.maps.Map($('#temp')[0], mapOptions);
 		polyPath.setMap(this.map);
 	}
 	var that = this;
