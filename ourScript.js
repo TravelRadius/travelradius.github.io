@@ -2,6 +2,14 @@ var first_click = false;
 
 $(document).ready(function() {
 
+		 var RN = new String (Math.random());
+		 var RNS = RN.substring (2,11);
+		 var OAS_query = 'XE' + '&' + OAS_rdl + "&if_nt_CookieAccept=" + OAS_CA + '&XE';
+				var oas_jx_pos = "Top";
+				var oas_jx_sitepage = "www.fuelgaugereport.com";
+				var clubcode = 996;
+				document.write("<scr" + "ipt language=\"JavaScript\" src=\"http://oascentral.aaa.com/RealMedia/ads/adstream_jx.ads/" + oas_jx_sitepage + "/1" + RNS + "@" + oas_jx_pos + '?' + OAS_query + "&clubcode=" + clubcode + "\"></scr" + "ipt>");
+
   $(".btn").click(function() {
     if ($(this).hasClass("active") || !$(this).hasClass("t"))
       return;
