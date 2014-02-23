@@ -4,7 +4,7 @@ var first_click = false;
 $(document).ready(function() {
 
   $( '#menu' ).multilevelpushmenu({
-                    menuWidth: 450, // '450px', '30em', '25%' will also work
+                    menuWidth: 350, // '450px', '30em', '25%' will also work
                             menuHeight: "calc(100% - 60px)"
   });
 
